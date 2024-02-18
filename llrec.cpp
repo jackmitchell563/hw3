@@ -7,7 +7,11 @@ using namespace std;
 //*********************************************
 
 void llpivot(Node *&head, Node *&smaller, Node *&larger, int pivot){
-  if(nullptr == head) return;
+  if(nullptr == head){
+    smaller = nullptr;
+    larger = nullptr;
+    return;
+  }
   if(head->val > pivot){
     Node* temp = head->next;
     larger = head;
