@@ -10,20 +10,16 @@ class Stack : private std::vector<T>
 {
     public:
         Stack();
-        ~Stack();
         bool empty() const;
         size_t size() const;
         void push(const T& item);
         void pop();  // throws std::underflow_error if empty
         const T& top() const;
         // Add other members only if necessary
-    private:
-        std::vector<T> *data;
 };
 
 template <typename T>
-Stack<T>::Stack(){
-    this->data = new std::vector<T>;
+Stack<T>::Stack() : std::vector<T>() {
 }
 template<typename T>
 void Stack<T>::push(const T& item){
@@ -34,10 +30,6 @@ const T& Stack<T>::top() const{
     if(this->empty()) throw std::underflow_error("underflow");
     return std::vector<T>::back();
 }  // throws std::underflow_error if empty
-template<typename T>
-Stack<T>::~Stack(){
-  delete this->data;
-}
 template<typename T>
 bool Stack<T>::empty() const{
   return !(this->size());
